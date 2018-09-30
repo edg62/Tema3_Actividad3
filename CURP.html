@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Calcular CURP</title>
+
+		<script type="text/javascript">
+			function RFC() {
+				var n = document.getElementById("nombre").value;
+				var a = document.getElementById("ap1").value;
+				var a2 = document.getElementById("ap2").value;
+				var f = document.getElementById("fecha").value;
+				var e = document.getElementById("estado").value;
+				var h = document.getElementById("hombre").checked;
+				var m = document.getElementById("mujer").checked;
+				var s;
+
+				x = a.split(" ");
+				a = x[x.length-1];
+
+				xx = a2.split(" ");
+				a2 = xx[xx.length-1];
+
+				n = n.substring(0, 1);
+				a1 = a.substring(0, 1);
+
+				for (var i = 1; i < a.length; i++) {
+					if ((a.charAt(i)=="a") || (a.charAt(i)=="e") || (a.charAt(i)=="i") || (a.charAt(i)=="o") || (a.charAt(i)=="u")) {
+						a1 = a1 + a.charAt(i);
+					}
+				}
+
+				a2 = a2.substring(0, 1);
+
+				var fx = f.substring(8, 10);
+				fx  = fx + f.substring(3, 5);
+				fx  = fx + f.substring(0, 2);
+
+				e = e.substring(0, 1);
+
+				if (h==true) {
+					s="h";
+				}if (m==true) {
+					s="m";
+				}
+
+				var res = a1+a2+n+fx+s+e;
+
+				//alert(n+a1+a2+fx);
+				document.getElementById("res").innerText = res.toUpperCase();
+			}
+		</script>
+	</head>
+	<body>
+
+		<h1>Calcular RFC</h1>
+
+		<form method="POST" action="">
+			<label>Nombre: </label><input type="text" name="nombre" id="nombre"><br/>
+			<label>Apellido Paterno: </label><input type="text" name="ap1" id="ap1"><br/>
+			<label>Apellido Materno: </label><input type="text" name="ap2" id="ap2"><br/>
+			<label>Fecha de Nacimiento: </label><input type="text" name="fecha" id="fecha" placeholder="dd/m/aaaa"><br/>
+			<label>Estado de Naciemiento: </label><input type="text" name="estado" id="estado"><br/>
+			<label>Sexo: </label><br/>
+			<input type="radio" name="radio" id="hombre"><label for="hombre">Hombre   </label>
+			<input type="radio" name="radio" id="mujer"><label for="mujer">Mujer</label><br/>
+
+
+			<input type="button" name="calcular" value="Calcular" onclick="RFC();">
+			<input type="reset" name="restablecer" value="restablecer"><br/><br/>
+
+			<label>El CRUP ES: </label><label id="res"></label>
+		</form>
+
+	</body>
+</html>

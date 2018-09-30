@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<script type="text/javascript">
+			function calcular() {
+				var r1 = document.getElementById("uni1").checked;
+				var r2 = document.getElementById("uni2").checked;
+				var r3 = document.getElementById("uni3").checked;
+				var n = document.getElementById("num").value;
+				var num = parseInt(n);
+				
+
+				if (r1 == true) {
+					document.getElementById("res").innerText = num.toString(2);
+				}if (r2 == true) {
+					document.getElementById("res").innerText = num.toString(8);
+				}if (r3 == true) {
+					document.getElementById("res").innerText = num.toString(16);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Calcular RFC</h1>
+
+		<form>
+			<label>Escribe un Numero: </label><input type="text" name="num" id="num"><br/>
+			<input type="radio" name="uni" id="uni1" onclick="calcular();"><label for="uni1">Binario</label><br>
+			<input type="radio" name="uni" id="uni2" onclick="calcular();"><label for="uni2">Octal</label><br>
+			<input type="radio" name="uni" id="uni3" onclick="calcular();"><label for="uni3">Hexadecimal</label><br>
+			<label>El numero es: </label><label id="res"></label>
+		</form>
+
+	</body>
+</html>
